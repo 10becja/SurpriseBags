@@ -1,16 +1,9 @@
 package org.samson.bukkit.plugins.surprisebags;
 
-import com.sk89q.worldguard.bukkit.WGBukkit;
-import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.managers.RegionManager;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import java.util.Set;
-import java.util.logging.Logger;
-import org.bukkit.Location;
-import org.bukkit.Server;
+
 import org.bukkit.World;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Listener;
@@ -18,10 +11,6 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.samson.bukkit.plugins.surprisebags.MobNameToEntityMapper;
-import org.samson.bukkit.plugins.surprisebags.SurpriseBagsCommandCompleter;
-import org.samson.bukkit.plugins.surprisebags.SurpriseBagsCommandExecutor;
-import org.samson.bukkit.plugins.surprisebags.SurpriseBagsEventListener;
 import org.samson.bukkit.plugins.surprisebags.bag.BagController;
 import org.samson.bukkit.plugins.surprisebags.config.BagServiceBuilder;
 import org.samson.bukkit.plugins.surprisebags.config.ConfigurationIOError;
@@ -29,6 +18,11 @@ import org.samson.bukkit.plugins.surprisebags.config.ConfigurationService;
 import org.samson.bukkit.plugins.surprisebags.config.InvalidParameterError;
 import org.samson.bukkit.plugins.surprisebags.config.MissingTemplateException;
 import org.samson.bukkit.plugins.surprisebags.service.BagService;
+
+import com.sk89q.worldguard.bukkit.WGBukkit;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class SurpriseBags extends JavaPlugin {
     private final SurpriseBagsCommandExecutor commandExecutor;

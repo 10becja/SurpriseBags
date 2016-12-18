@@ -1,35 +1,26 @@
 package org.samson.bukkit.plugins.surprisebags.bag;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.samson.bukkit.plugins.surprisebags.SurpriseBags;
-import org.samson.bukkit.plugins.surprisebags.bag.Bag;
 import org.samson.bukkit.plugins.surprisebags.service.BagService;
 
 public class BagController {
@@ -44,14 +35,14 @@ public class BagController {
     public boolean handleBagOpen(Player player, ItemStack item, String loreFirstLine) {
         Bag bag = this.bagService.getBagById(loreFirstLine);
         if (bag != null) {
-            double rand;
+            double rand = Math.random();
             if (!player.hasPermission("surprisebags.openbag")) {
                 player.sendMessage(ChatColor.RED + " You do not have permission to open this bag!");
                 return true;
             }
             boolean failure = false;
             double failureChance = bag.getFailureChance();
-            if (failureChance != 0.0 && (rand = Math.random()) < failureChance) {
+            if (failureChance != 0.0 && rand < failureChance) {
                 failure = true;
                 PotionEffect effect = this.getRandomNegativePotionEffect();
                 player.addPotionEffect(effect);

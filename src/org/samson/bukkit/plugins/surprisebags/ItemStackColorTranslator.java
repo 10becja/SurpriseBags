@@ -2,6 +2,7 @@ package org.samson.bukkit.plugins.surprisebags;
 
 import java.util.List;
 import java.util.ListIterator;
+
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -34,7 +35,7 @@ public class ItemStackColorTranslator {
     private void applyOnLoreStrings(ItemStack itemStack, ColorCodeTranslator translator) {
         ItemMeta itemMeta;
         if (itemStack.hasItemMeta() && (itemMeta = itemStack.getItemMeta()).hasLore()) {
-            List loreList = itemMeta.getLore();
+            List<String> loreList = itemMeta.getLore();
             ListIterator<String> iterator = loreList.listIterator();
             while (iterator.hasNext()) {
                 String loreString = (String)iterator.next();

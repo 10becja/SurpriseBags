@@ -1,0 +1,31 @@
+name: SurpriseBags
+main: org.samson.bukkit.plugins.surprisebags.SurpriseBags
+version: 1.8.9
+
+softdepend: [WorldGuard]
+
+commands:
+   surprisebags:
+      description: SurpriseBags Admin Command
+      aliases: sbag
+      usage: |
+        /<command> version - Get the plugin's version
+        /<command> spawn <bag> [count] [player] - Spawn a specific bag to a player
+        /<command> list - List of existing bags
+        /<command> edit <bag> - Edit/view the items in a bag
+        /<command> save <bag> - Save the inventory of a bag
+        /<command> addbag <bag-id> [name] [drop-chance] - Add a new bag
+        /<command> removebag <bag-id> - remove a custom bag
+        /<command> reload - Reload the configuration files
+      permission: surprisebags.command
+
+permissions:
+   surprisebags.command:
+      description: Allows you to use the SurpriseBags admin command
+      default: op
+   surprisebags.edit:
+      description: Allows you to edit the bags (use edit subcommand)
+      default: op
+   surprisebags.openbag:
+      description: Allows you to open bags
+      default: true

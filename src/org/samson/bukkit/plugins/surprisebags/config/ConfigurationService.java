@@ -5,15 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
-
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.samson.bukkit.plugins.surprisebags.SurpriseBags;
 import org.samson.bukkit.plugins.surprisebags.config.ConfigurationIOError;
@@ -34,23 +30,23 @@ public class ConfigurationService {
     }
 
     public synchronized Set<String> getBagList() {
-        List listOfBags = this.plugin.getConfig().getStringList("Bags");
+        List<String> listOfBags = this.plugin.getConfig().getStringList("Bags");
         String yamlFilename = "bags.yml";
-        File file = new File(this.plugin.getDataFolder(), "bags.yml");
+        File file = new File(this.plugin.getDataFolder(), yamlFilename);
         YamlConfiguration yamlConfig = null;
         if (file.exists()) {
             yamlConfig = YamlConfiguration.loadConfiguration((File)file);
         } else {
-            InputStream configurationStream = this.plugin.getResource("bags.yml");
+            InputStream configurationStream = this.plugin.getResource(yamlFilename);
             if (configurationStream != null) {
-                this.plugin.saveResource("bags.yml", false);
+                this.plugin.saveResource(yamlFilename, false);
                 yamlConfig = YamlConfiguration.loadConfiguration((InputStream)configurationStream);
             } else {
                 this.plugin.getLogger().warning("Cannot find bags file (update plugin?)");
             }
         }
         if (yamlConfig != null) {
-            List customBagList = yamlConfig.getStringList("bags");
+            List<String> customBagList = yamlConfig.getStringList("bags");
             listOfBags.addAll(customBagList);
         }
         HashSet<String> bagsSet = new HashSet<String>(listOfBags);
@@ -223,7 +219,7 @@ public class ConfigurationService {
         if (!bagListYamlConfig.isSet("bags")) {
             throw new ConfigurationIOError("Error in reading the bags list");
         }
-        List customBagList = bagListYamlConfig.getStringList("bags");
+        List<?> customBagList = bagListYamlConfig.getStringList("bags");
         if (customBagList.contains(bagId)) {
             customBagList.remove(bagId);
             bagListYamlConfig.set("bags", (Object)customBagList);

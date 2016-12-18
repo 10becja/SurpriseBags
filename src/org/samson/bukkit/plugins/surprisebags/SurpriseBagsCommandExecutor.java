@@ -1,28 +1,20 @@
 package org.samson.bukkit.plugins.surprisebags;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
+
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.samson.bukkit.plugins.surprisebags.ItemStackColorTranslator;
-import org.samson.bukkit.plugins.surprisebags.SurpriseBags;
 import org.samson.bukkit.plugins.surprisebags.bag.Bag;
 import org.samson.bukkit.plugins.surprisebags.config.ConfigurationIOError;
-import org.samson.bukkit.plugins.surprisebags.config.ConfigurationService;
 import org.samson.bukkit.plugins.surprisebags.config.InvalidParameterError;
 import org.samson.bukkit.plugins.surprisebags.config.MissingTemplateException;
 import org.samson.bukkit.plugins.surprisebags.service.BagService;

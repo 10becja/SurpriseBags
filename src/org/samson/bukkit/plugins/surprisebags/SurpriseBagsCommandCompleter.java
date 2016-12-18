@@ -3,11 +3,10 @@ package org.samson.bukkit.plugins.surprisebags;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.samson.bukkit.plugins.surprisebags.SurpriseBags;
-import org.samson.bukkit.plugins.surprisebags.service.BagService;
 
 public class SurpriseBagsCommandCompleter
 implements TabCompleter {

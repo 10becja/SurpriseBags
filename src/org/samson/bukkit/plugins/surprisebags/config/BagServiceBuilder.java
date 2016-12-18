@@ -2,7 +2,6 @@ package org.samson.bukkit.plugins.surprisebags.config;
 
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,10 +9,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.samson.bukkit.plugins.surprisebags.ItemStackColorTranslator;
-import org.samson.bukkit.plugins.surprisebags.MobNameToEntityMapper;
 import org.samson.bukkit.plugins.surprisebags.SurpriseBags;
 import org.samson.bukkit.plugins.surprisebags.bag.Bag;
-import org.samson.bukkit.plugins.surprisebags.config.ConfigurationService;
 import org.samson.bukkit.plugins.surprisebags.service.BagService;
 
 public class BagServiceBuilder {
@@ -55,7 +52,7 @@ public class BagServiceBuilder {
                     bagItem.addFailureLIne(line);
                 }
                 ItemStackColorTranslator itemStackTranslator = new ItemStackColorTranslator();
-                List itemsInBag = bagConfig.getList("items");
+                List<?> itemsInBag = bagConfig.getList("items");
                 if (itemsInBag != null) {
                     for (Object item : itemsInBag) {
                         if (!(item instanceof ItemStack)) continue;

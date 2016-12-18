@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.samson.bukkit.plugins.surprisebags.bag.Bag;
 
@@ -32,10 +31,10 @@ public class BagService {
         ArrayList<Bag> randomList = new ArrayList<Bag>();
         Set<Map.Entry<String, Bag>> bagEntrySet = this.bags.entrySet();
         for (Map.Entry<String, Bag> entry : bagEntrySet) {
-            double rand;
-            double dropChance;
+            double rand = Math.random();
             Bag bag = entry.getValue();
-            if (!bag.canBeDropFromMob(deadEntity.getType()) || (rand = Math.random()) >= (dropChance = bag.getDropChance())) continue;
+            if (!bag.canBeDropFromMob(deadEntity.getType()) || rand >= bag.getDropChance())
+            	continue;
             randomList.add(bag);
         }
         return randomList;
